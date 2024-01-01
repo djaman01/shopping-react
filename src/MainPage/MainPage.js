@@ -1,18 +1,20 @@
 import './mainPage.css';
 
 
-export default function MainPage() {
+export default function MainPage({imageUrl, name, details, prix}) {
   return (
     <>
-      <div className="home-title">
-        <h1> Shopping list</h1>
-      </div>
+    
+    
+        <div className='product-card'>
+          <img src={imageUrl} alt={name} style={{width: 300, height: 300}}  />
 
-      <div class="all-products">
-        <div className='card'>
-          
+          <h3>{details}</h3>
+          <h3>{prix}</h3>
         </div>
-      </div>
+
+
+  
 
     </>
 

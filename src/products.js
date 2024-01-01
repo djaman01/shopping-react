@@ -1,12 +1,29 @@
 
-export const produits = [
+export const products = [
   {
-    "type": "Vetement",
-    "détails": "Chemise à carreaux",
-    "marque": "Zalando",
+    "imageUrl": "../produits/chemise-rouge.webp",
+    "name": "Chemise rouge",
+    "details": "Zalando",
     "prix": "300 Dhs",
-    "thumbnail": "../imagesTableaux/abousmah502.jpeg", //On met .. pour pouvoir accéder à l'image partout, même dans le component FicheProduit
     "id": 1,
+  },
+
+  {
+    "imageUrl": "../produits/chemise-à-carreaux.jpg",
+    "name": "Chemise à carreaux",
+    "details": "Zalando",
+    "prix": "300 Dhs",
+    "id": 2,
+  },
+
+  
+  {
+    "imageUrl": "../produits/chemise1.jpg",
+    "name": "Chemise 1",
+    "details": "Zalando",
+    "prix": "300 Dhs",
+    "id": 3,
   }
+
 
 ]
