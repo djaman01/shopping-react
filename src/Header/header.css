@@ -1,0 +1,16 @@
+.header-nav{
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  cursor: pointer;
+}
+
+.logo-image {
+  width: 250px;
+}
+
+#search-header {
+height: 30px;
+}

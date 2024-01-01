@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./Main";
 import NoPage from "./NoPage";
+import '@picocss/pico';
 
 
 function App() {
