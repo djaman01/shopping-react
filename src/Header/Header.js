@@ -1,9 +1,4 @@
 import "./header.css"
-import { FaFacebook } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
 
 export default function Header() {
   return (
@@ -15,8 +10,8 @@ export default function Header() {
         </ul>
         <ul>
           <li><input type="search" id="search-header" name="search" placeholder="Search" /></li>
-
         </ul>
+
         <ul>
           <li >Home</li>
           <li role="list" dir="rtl">
