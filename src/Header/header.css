@@ -1,4 +1,4 @@
-.header-nav{
+.header-nav {
   display: flex;
   justify-content: space-around;
 }
@@ -12,5 +12,82 @@ li {
 }
 
 #search-header {
-height: 30px;
+  height: 30px;
 }
+
+/* Header supérieur */
+.top-header {
+  display: flex;
+  justify-content: space-around;
+  height: 35px;
+  background-color: rgb(246, 240, 240);
+}
+
+.face-logo, .insta-logo, .twitter-logo {
+  font-size: 25px;
+}
+
+.face-logo-p::after, .twitter-logo-p::after {
+  content: "|";
+  margin-left: 12px;
+  color: rgb(225, 217, 217);
+}
+
+.face-logo-p::before {
+  content: "|";
+  margin-right: 12px;
+  color: rgb(225, 217, 217);
+}
+
+.face-logo {
+  color: blue;
+}
+
+.insta-logo {
+  color: purple;
+}
+
+.space-top-header {
+  width: 350px;
+}
+
+.all-top-logos {
+  cursor: pointer;
+  display: flex;
+  width: 150px;
+  justify-content: space-around;
+  margin-left: -80px;
+}
+
+.number-mail {
+
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+}
+
+.number-header::after {
+  content: "|";
+  margin-left: 12px;
+  color: rgb(225, 217, 217);
+}
+
+.menu-top-header {
+
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+}
+
+.my-account-header::after, .checkout-header::after{
+  content: "|";
+  margin-left: 40px;  
+  color: rgb(225, 217, 217);
+}
+
+/* media query top header */
+
+@media (max-width: 844px) {
+  
+}
+
