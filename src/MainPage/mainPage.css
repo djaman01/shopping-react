@@ -6,6 +6,7 @@
   background-color: #FFFFFF;
 }
 
+/* Pour lever la carte quand hover avec la souris */
 .item-map-products:hover {
   cursor: pointer;
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.1);

@@ -29,8 +29,5 @@ export default function MainPage({ imageUrl, name, details, prix }) {
     </div>
 
 
-
-
-
   )
 }
