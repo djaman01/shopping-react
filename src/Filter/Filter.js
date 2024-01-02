@@ -13,7 +13,7 @@ export default function Filter() {
 
   const filteredArray = products.filter((element,index)=>element.name.toLowerCase().includes(name.toLowerCase())) ;
 
-  useEffect(()=>{document.title= `Players page`},[])
+  useEffect(()=>{document.title= `Shopping cart`},[])
 
 
   return (
