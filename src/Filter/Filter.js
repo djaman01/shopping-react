@@ -13,6 +13,7 @@ export default function Filter() {
 
   const filteredArray = products.filter((element,index)=>element.name.toLowerCase().includes(name.toLowerCase())) ;
 
+  //Pour donner un nom à la page dès l'ouverture du site
   useEffect(()=>{document.title= `Shopping cart`},[])
 
 
