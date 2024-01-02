@@ -8,3 +8,16 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
 }
+
+#all-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.image-card {
+ width: 200px;
+}
