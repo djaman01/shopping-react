@@ -4,6 +4,13 @@ import MainPage from "../MainPage/MainPage";
 import './filter.css';
 
 export default function Filter() {
+//Le truc pour faire apparaitre shopping cart était de:
+//1) mettre le onClick en props
+//2) Dans ce component on utilise le products array et on map sur une filtered array
+//3)Donc on peut destructurer les elements de l'array et utiliser ce qu'on veut
+//4) Et ce sont ces élements destructurer qu'on va mettre en valeur de la function appeler dans onClick, pour ne stocker que les valeurs qu'on veut
+//5)Quand on aura stocker les valeurs qu'on veut dans cart Items on va mapper dessus et crerr comme on veut
+
   // Pour le search input
   const [name, setName] = useState('');
 
@@ -16,7 +23,7 @@ export default function Filter() {
   // Pour faire apparaître les cart items
   const [cartItems, setCartItems] = useState([]);
 
-  //handleAddtToCart lier au bouton addToLis / Pour limiter l'ajout dans le cart que 1 fois pour chaque item
+  //handleAddtToCart lier au bouton addToList / Pour limiter l'ajout dans le cart que 1 fois pour chaque item dans l'array cartItems
   const handleAddToCart = (newItem) => {
     // Check if the item is already in the cart based on its name
     const isItemInCart = cartItems.find((item) => item.name === newItem.name);
