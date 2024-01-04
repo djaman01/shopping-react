@@ -1,7 +1,23 @@
+import { useEffect, useState } from 'react';
 import './mainPage.css';
 
 
 export default function MainPage({ imageUrl, name, details, prix }) {
+
+  //Je met une array: car on va stocker plusieurs items
+  const [listContent, setListContent] = useState([]);
+
+  const handleContent = () => {
+    const newItem = { imageUrl, name, prix };
+    setListContent((prevList) => [...prevList, newItem]);
+
+  };
+
+//States = asynchrones et console.log s'execute avant, donc pour voir on met dans useEffect
+  useEffect(() => {
+    console.log(listContent);
+  }, [listContent]);
+
   return (
 
 
@@ -17,13 +33,13 @@ export default function MainPage({ imageUrl, name, details, prix }) {
 
 
       <div className="div-text-map-products">
-      <p className='map-products-type'>{name}</p>
+        <p className='map-products-type'>{name}</p>
         <p className='map-products-type'>{details}</p>
         <p className='map-products-price'>{prix}</p>
       </div>
 
       <div>
-        <button className='button-add'>Add to List</button>
+        <button className='button-add' onClick={handleContent}>Add to List</button>
       </div>
 
     </div>

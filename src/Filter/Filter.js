@@ -23,7 +23,7 @@ export default function Filter() {
     <input id="search-input" type="search" placeholder="type name of product" value={name} onChange={updateName}/>
     </div>
     <div className="grid-filter">
-      {filteredArray.map((e, i)=><MainPage {...e} key='i'/>)}
+      {filteredArray.map((e, i)=><MainPage {...e} key={i}/>)}
     </div>
     </>
   )

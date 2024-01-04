@@ -11,8 +11,8 @@ export const products = [
   {
     "imageUrl": "../produits/chemise-à-carreaux.jpg",
     "name": "Chemise à carreaux",
-    "details": "Zalando",
-    "prix": "300 Dhs",
+    "details": "Zara",
+    "prix": "400 Dhs",
     "id": 2,
   },
 
@@ -20,8 +20,8 @@ export const products = [
   {
     "imageUrl": "../produits/chemise1.jpg",
     "name": "Chemise 1",
-    "details": "Zalando",
-    "prix": "300 Dhs",
+    "details": "Celio",
+    "prix": "500 Dhs",
     "id": 3,
   }
 
