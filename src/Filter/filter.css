@@ -1,4 +1,4 @@
-.grid-filter{
+.grid-filter {
   display: grid;
   grid-template-columns: 250px 250px 250px;
   gap: 50px;
@@ -14,3 +14,21 @@
   width: 300px;
 }
 
+.shopCart {
+
+  display: flex;
+
+}
+
+.image-shop-cart {
+  width: 50px;
+}
+
+.name-prix {
+  display: flex;
+  justify-content: space-around;
+}
+
+.name-prix ::before {
+ content: ' | ';
+}

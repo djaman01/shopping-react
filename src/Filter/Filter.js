@@ -16,10 +16,10 @@ export default function Filter() {
   );
   //Fin search input
 
-  // Pour faire apparaître les cart items
+  //Pour stocker certaines données des produits sur lesquels on va cliquer
   const [cartItems, setCartItems] = useState([]);
 
-  //handleAddtToCart lier au bouton addToList / Pour limiter l'ajout dans le cart que 1 fois pour chaque item dans l'array cartItems
+  //Donne valeur à cartItems ET limite l'ajout dans le cart que 1 fois pour chaque item dans l'array cartItems
   const handleAddToCart = (newItem) => {
     // Check if the item is already in the cart based on its name
     const isItemInCart = cartItems.find((item) => item.name === newItem.name);
@@ -62,18 +62,26 @@ export default function Filter() {
         })}
       </div>
       <div>
+  {/* On map sur carItems state variable pour créer shopping cart */}
         <h2>Shopping Cart</h2>
         <ul>
           {cartItems.map((item, index) => (
-            <div key={index}>
+            <div className="shopCart" key={index}>
               <img
                 src={item.imageUrl}
                 alt={item.name}
-                style={{ width: "50px" }}
+                className="image-shop-cart"
               />
-              <li>
-                {item.name} - {item.prix}
-              </li>
+              <div className="name-prix">
+              <p>
+                {item.name}
+              </p>
+
+              <p>
+                 {item.prix}
+              </p>
+              </div>
+
             </div>
           ))}
         </ul>
