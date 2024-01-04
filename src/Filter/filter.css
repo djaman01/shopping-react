@@ -32,3 +32,8 @@
 .name-prix ::before {
  content: ' | ';
 }
+
+#quantity-product {
+  width: 20%;
+  height: 20%;
+}

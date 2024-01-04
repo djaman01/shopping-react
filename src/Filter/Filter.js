@@ -65,7 +65,7 @@ export default function Filter() {
   {/* On map sur carItems state variable pour créer shopping cart */}
         <h2>Shopping Cart</h2>
         <ul>
-          {cartItems.map((item, index) => (
+        {cartItems.map((item, index) => (
             <div className="shopCart" key={index}>
               <img
                 src={item.imageUrl}
@@ -73,17 +73,20 @@ export default function Filter() {
                 className="image-shop-cart"
               />
               <div className="name-prix">
-              <p>
-                {item.name}
-              </p>
+                <p>
+                  {item.name}
+                </p>
 
-              <p>
-                 {item.prix}
-              </p>
+                <p>
+                  {item.prix}
+                </p>
+
+                <input type="number" id="quantity-product" min="1" />
               </div>
 
             </div>
           ))}
+
         </ul>
       </div>
     </>
