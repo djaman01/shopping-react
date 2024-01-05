@@ -40,6 +40,12 @@ export default function Filter() {
     return cartItems.reduce((accumulator, item) => accumulator + calculateTotalPerItem(item), 0);
   };
 
+  //Pour Remove l'article du shoppingCart
+  const handleRemove = (index) => {
+    const removeArray = cartItems.filter((_, i)=> i !== index);
+    setCartItems(removeArray);
+  }
+  
   useEffect(() => {
     document.title = `Shopping cart`;
   }, []);
@@ -98,7 +104,7 @@ export default function Filter() {
                 Total: {calculateTotalPerItem(item)}
               </div>
               <div>
-                <p role="button" id="remove-btn">Remove</p>
+                <p role="button" id="remove-btn" onClick={()=>handleRemove(index)} >Remove</p>
               </div>
             </div>
           ))}
