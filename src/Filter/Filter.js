@@ -42,10 +42,10 @@ export default function Filter() {
 
   //Pour Remove l'article du shoppingCart
   const handleRemove = (index) => {
-    const removeArray = cartItems.filter((_, i)=> i !== index);
+    const removeArray = cartItems.filter((_, i) => i !== index);
     setCartItems(removeArray);
   }
-  
+
   useEffect(() => {
     document.title = `Shopping cart`;
   }, []);
@@ -77,41 +77,55 @@ export default function Filter() {
           ))}
       </div>
       {/* Shopping Cart */}
-      <div>
-        <h2>Shopping Cart</h2>
+      <div className="all-shop-cart">
+        <h2 className="shop-cart-title">Shopping Cart</h2>
         {/* On map sur les produits sur lesquels on a cliqué et ajouté dans la state variable "cartItems" */}
         {/* On remplace chaque element de la cart items par tout <div></div> pour créer le shopping cart  */}
-        <ul>
-          {cartItems.map((item, index) => (
-            <div className="shopCart" key={index}>
-              <img
-                src={item.imageUrl}
-                alt={item.name}
-                className="image-shop-cart"
-              />
-              <div className="name-prix">
-                <p>{item.name}</p>
-                <p>{item.prix}</p>
-                <input
-                  type="number"
-                  id="quantity-product"
-                  min="1"
-                  value={item.quantity}
-                  onChange={(e) => updateQuantity(index, e.target.value)}
-                />
-              </div>
-              <div className="total-per-item">
-                Total: {calculateTotalPerItem(item)}
-              </div>
-              <div>
-                <p role="button" id="remove-btn" onClick={()=>handleRemove(index)} >Remove</p>
-              </div>
-            </div>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.name}
+                    className="image-shop-cart"
+                  />
+                  <p>{item.name}</p>
+                </td>
+                <td>{item.prix}</td>
+                <td>
+                  <input
+                    type="number"
+                    id="quantity-product"
+                    min="1"
+                    value={item.quantity}
+                    onChange={(e) => updateQuantity(index, e.target.value)}
+                  />
+                </td>
+                <td className="sub-total">{calculateTotalPerItem(item)}</td>
+                <td>
+                  <p role="button" id="remove-btn" onClick={() => handleRemove(index)}>
+                    Remove
+                  </p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
         {/* On appelle la function calculateTotalGeneral pour avoir le total géneral */}
         <div className="total-general">
-          Total General: {calculateTotalGeneral()} 
+          <h4>Total General: <span style={{color:'#00A170'}}>{calculateTotalGeneral()}</span></h4> 
         </div>
       </div>
     </>

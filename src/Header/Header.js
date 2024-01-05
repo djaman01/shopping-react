@@ -8,9 +8,6 @@ export default function Header() {
         <ul>
           <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
         </ul>
-        <ul>
-          <li><input type="search" id="search-header" name="search" placeholder="Search" /></li>
-        </ul>
 
         <ul>
           <li >Home</li>
