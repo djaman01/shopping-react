@@ -16,24 +16,11 @@
   margin-top: 30px;
 }
 
-.shopCart {
-
-  display: flex;
-
-}
 
 .image-shop-cart {
   width: 50px;
 }
 
-.name-prix {
-  display: flex;
-  justify-content: space-around;
-}
-
-.name-prix ::before {
- content: ' | ';
-}
 
 #quantity-product {
   width: 20%;

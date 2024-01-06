@@ -76,6 +76,7 @@ export default function Filter() {
             />
           ))}
       </div>
+      
       {/* Shopping Cart */}
       <div className="all-shop-cart">
         <h2 className="shop-cart-title">Shopping Cart</h2>
