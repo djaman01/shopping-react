@@ -10,13 +10,13 @@ export default function Filter() {
   //Store valeur input dans la state "name"
   const updateName = (event) => setName(event.target.value);
 
-  //Valeur du props onAddToCart = quand on va cliquer sur le bouton add to list du produit
-  const handleAddToCart = (newItem) => { //newItem = paramètre dont valeur est donnée lors de l'appel de la function = quand on va cliquer (ici les valeurs sont {...element, quantity:1}) = toutes les valeurs des propriété des objets de l'array products, à laquelle on rajoute une nouvelle property quantity avec pour valeur 1
+  //Valeur du props onAddToCart / Pour donner toutes les valeurs des cartes à la state cartItems, puis mapper dessus
+  const handleAddToCart = (newItem) => { //newItem = paramètre dont valeur les valeurs sont {...element, quantity:1} donné lors de lappel de fonction quand on clique
 
     const isItemInCart = cartItems.find((item) => item.name === newItem.name);//Store true or false si item ajouté a le même nom que celui dans le shopping Cart
 
     if (!isItemInCart) { //si isItemInCart = false alors ajoute l'item selectionné dans la state variable 'cartItems' + ajoute la property quantity: 1
-      setCartItems((prevItems) => [...prevItems, { ...newItem, quantity: 1 }]);
+      setCartItems((prevItems) => [...prevItems, { ...newItem }]);
     }
   };
 
@@ -72,7 +72,7 @@ export default function Filter() {
             <MainPage
               {...element} //Donne les valeurs aux props de MainPage qui sont: toutes les properties' value de la products array sur laquelle on map 
               key={index} //Onligé pour reconnaitre chaque element sur lequel on map
-              onAddToCart={() => handleAddToCart({ ...element, quantity: 1 })} //A chaque clique on passe toutes les valeurs des properties du produits en argument et on ajoute une property quantity:1
+              onAddToCart={() => handleAddToCart({ ...element, quantity: 1 })} //A chaque clique on passe toutes les valeurs des properties du produits en argument
             />
           ))}
       </div>
@@ -110,7 +110,7 @@ export default function Filter() {
                     id="quantity-product"
                     min="1"
                     value={item.quantity}
-                    onChange={(e) => updateQuantity(index, e.target.value)}
+                    onChange={(e) => updateQuantity(index, e.target.value)} //e.target.value= cible quantity input et donne en valeur paramètre
                   />
                 </td>
                 <td className="sub-total">{calculateTotalPerItem(item)}</td>
