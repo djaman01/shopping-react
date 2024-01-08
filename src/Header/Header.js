@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./header.css"
 
 export default function Header() {
@@ -5,9 +6,11 @@ export default function Header() {
     <>
 
       <nav className="header-nav">
+        <Link to='/addProduct'>
         <ul>
           <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
         </ul>
+        </Link>
 
         <ul>
           <li >Home</li>

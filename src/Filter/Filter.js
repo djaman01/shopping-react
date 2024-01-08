@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { products } from "../products";
 import MainPage from "../MainPage/MainPage";
+
+import axios from 'axios';
+
 import './filter.css';
 
 export default function Filter() {
@@ -49,6 +52,8 @@ export default function Filter() {
   useEffect(() => {
     document.title = `Shopping cart`;
   }, []);
+
+
 
   return (
     <>
@@ -109,7 +114,7 @@ export default function Filter() {
                     type="number"
                     id="quantity-product"
                     min="1"
-                    value={item.quantity}
+                    value={item.quantity} //Pour voir 1 dès le départ
                     onChange={(e) => updateQuantity(index, e.target.value)} //e.target.value= cible quantity input et donne en valeur paramètre
                   />
                 </td>
