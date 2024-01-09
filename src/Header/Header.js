@@ -6,7 +6,7 @@ export default function Header() {
     <>
 
       <nav className="header-nav">
-        <Link to='/addProduct'>
+        <Link to='/addAllProduct'>
         <ul>
           <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
         </ul>
