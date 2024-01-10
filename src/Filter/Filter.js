@@ -23,8 +23,8 @@ export default function Filter() {
 
   //Pour update la property quantity quand on augmente le nombre de l'input et ainsi pouvoir plutard calculé le total
   const updateQuantity = (index, newQuantity) => {//valeur des paramètres index et newQuantity sont donnés lors de l'appel de function
-    setCartItems((prevItems) => //Si +1 ou -1 quantity input alors: vérifie si l'element mis à jour à le même index et si oui update sa property quantity / sinon ne fait rien
-      prevItems.map((item, i) =>
+    setCartItems((cartItems) => //paramète update method est la state variable elle-même et donc ces valerus; on peut donc mapper dessus
+      cartItems.map((item, i) => //Si +1 ou -1 quantity input alors: vérifie si l'element mis à jour à le même index et si oui update sa property quantity / sinon ne fait rien
         i === index ? { ...item, quantity: newQuantity } : item
       )
     );
@@ -43,7 +43,7 @@ export default function Filter() {
 
   //Pour Remove l'article du shoppingCart
   const handleRemove = (index) => {
-    const removeArray = cartItems.filter((_, i) => i !== index);
+    const removeArray = cartItems.filter((_, i) => i !== index); //Ne garde que les pdouits différents de clui sur lequel on a cliqué
     setCartItems(removeArray);
   }
 
@@ -68,16 +68,10 @@ export default function Filter() {
       <div className="grid-filter">
         {/*  .filter is done to display only those products whose names contain the term searched in input */}
         {products
-          .filter((element) =>
-            element.name.toLowerCase().includes(name.toLowerCase())
+          .filter((e)=> e.name.toLowerCase().includes(name.toLowerCase())) //Ne pas mettre ;
+          .map((e,i)=> <MainPage {...e} key={i} onAddToCart={()=>handleAddToCart({...e, quantity:1})} /> //Value paramètre (newItem) de handleAddToCart function = objet products + nouvelle propert quantity:1 (on utilise uen copie avec le ...e)
           )
-          .map((element, index) => (
-            <MainPage
-              {...element} //Donne les valeurs aux props de MainPage qui sont: toutes les properties' value de la products array sur laquelle on map 
-              key={index} //Onligé pour reconnaitre chaque element sur lequel on map
-              onAddToCart={() => handleAddToCart({ ...element, quantity: 1 })} //A chaque clique on passe toutes les valeurs des properties du produits en argument
-            />
-          ))}
+         }
       </div>
       
       {/* Shopping Cart */}
