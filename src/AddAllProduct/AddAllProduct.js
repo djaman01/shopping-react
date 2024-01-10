@@ -10,8 +10,8 @@ import Header from '../Header/Header';
 export default function AddAllProduct() {
 
   //Comme il y a l'image, faire un state avec un objet comme dans contact ne va pas marcher
-  const [imageUrl, setImageUrl] = useState('');
-  const [auteur, setauteur] = useState('');
+  const [imageUrl, setImageUrl] = useState(''); //setImage dans dropzone
+  const [auteur, setauteur] = useState(''); //setAuteur dans onChange
   const [type, setType] = useState('');
   const [infoProduit, setInfoProduit] = useState('');
   const [prix, setPrix] = useState('');
@@ -102,7 +102,7 @@ export default function AddAllProduct() {
 
           </div>
 
-          {/* Dropping image will store it in the imageUrl state variable */}
+          {/* code à copier: Dropping image will store it in the imageUrl state variable */}
           <Dropzone onDrop={acceptedFiles => setImageUrl(acceptedFiles[0])}>
             {({ getRootProps, getInputProps }) => (
               <div className="dropzone-add-product" {...getRootProps()}>
