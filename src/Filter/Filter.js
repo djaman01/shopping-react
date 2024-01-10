@@ -10,18 +10,16 @@ export default function Filter() {
   const [name, setName] = useState(''); //Pour store value input et créer un search
   const [cartItems, setCartItems] = useState([]); // Pour store les produits sélectionnés
 
-  //Store valeur input dans la state "name"
-  const updateName = (event) => setName(event.target.value);
+//But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
+  const handleAddToCart = (newItem) => { //Valeur paramètre est donné lors de l'appel de la function handleAddToCart quand on clique
 
-  //Valeur du props onAddToCart / Pour donner toutes les valeurs des cartes à la state cartItems, puis mapper dessus
-  const handleAddToCart = (newItem) => { //newItem = paramètre dont valeur les valeurs sont {...element, quantity:1} donné lors de lappel de fonction quand on clique
+    const isItemInCart = cartItems.find ((e)=> e.name === newItem.name) //Cherche si Nom item est déjà dans l'array cartItems
 
-    const isItemInCart = cartItems.find((item) => item.name === newItem.name);//Store true or false si item ajouté a le même nom que celui dans le shopping Cart
+    if(isItemInCart===undefined) {//Possible de faire (!isIteminCart) = si name item clicked pas dans l'array cartItems, alors ajoute le dans une copie
+      setCartItems((e)=>[...e, newItem]) //States in react are immutable => On ajoute l'item à la fin d'une une copie {...e} de l'array de cartItems
+    }   
+  }
 
-    if (!isItemInCart) { //si isItemInCart = false alors ajoute l'item selectionné dans la state variable 'cartItems' + ajoute la property quantity: 1
-      setCartItems((prevItems) => [...prevItems, { ...newItem }]);
-    }
-  };
 
   //Pour update la property quantity quand on augmente le nombre de l'input et ainsi pouvoir plutard calculé le total
   const updateQuantity = (index, newQuantity) => {//valeur des paramètres index et newQuantity sont donnés lors de l'appel de function
@@ -63,7 +61,7 @@ export default function Filter() {
           type="search"
           placeholder="type name of product"
           value={name}
-          onChange={updateName}
+          onChange={(e)=>setName(e.target.value)}
         />
       </div>
       {/* Au lieu de créer une variable qui store le filter de products avant le return; on fait tout d'un coup ici */}
