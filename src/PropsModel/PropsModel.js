@@ -12,6 +12,7 @@ export default function PropsModel({productsArr, error}) {
           <div className="grid-map-products">
               {productsArr.map((element) =>
                 <article id="product-card" key={element._id}>
+
                   <header id="header-card">
                     <img id="img-card" src={`http://localhost:3005/${element.imageUrl}`} alt={element.auteur} />
                   </header>
@@ -20,6 +21,10 @@ export default function PropsModel({productsArr, error}) {
                     <p className='product-auteur'>{element.auteur}</p>
                     <p className='product-info'>{element.infoProduit}</p>
                     <p className='product-price'>{element.prix}</p>
+                  </div>
+
+                  <div className='cart-btn-div'>
+                    <button id='cart-button'>Add to Cart</button>
                   </div>
 
                 </article>
