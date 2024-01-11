@@ -1,5 +1,6 @@
 import React from 'react'
 import './propsModel.css'
+
 export default function PropsModel({productsArr, error}) {
 
 //On ne met que 2 props, car après on va mapper sur l'array en props et on va utiliser ces élements à elle

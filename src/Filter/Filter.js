@@ -8,6 +8,11 @@ import './filter.css';
 
 export default function Filter() {
   const [name, setName] = useState(''); //Pour store value input et créer un search
+
+  const handleName = (e)=> {
+    setName(e.target.value)
+  }
+
   const [cartItems, setCartItems] = useState([]); // Pour store les produits sélectionnés
 
 //But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
@@ -61,7 +66,7 @@ export default function Filter() {
           type="search"
           placeholder="type name of product"
           value={name}
-          onChange={(e)=>setName(e.target.value)}
+          onChange={handleName}
         />
       </div>
       {/* Au lieu de créer une variable qui store le filter de products avant le return; on fait tout d'un coup ici */}
