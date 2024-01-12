@@ -1,81 +1,71 @@
 .grid-map-products {
-  display: grid;
-  grid-template-columns: 250px 250px 250px 250px;
-  column-gap: 50px;
-  justify-content: center;
-
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    gap: 50px;
+    justify-content: center;
 }
-
-#product-card {
+.item-map-products{
+  border: solid 1px rgb(186, 186, 186);
   border-radius: 10px;
-  width: 250px;
-  height: 530px;
+  width: 100%;
+  background-color: #FFFFFF;
 }
 
-#product-card:hover {
+/* Pour lever la carte quand hover avec la souris */
+.item-map-products:hover {
   cursor: pointer;
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px 15px rgba(8, 184, 223, 0.1);
-
+  box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
-
-#header-card {
-  padding: 0px;
-  height: 250px;
+.div-thumbnail-map-products {
+  width: 100%;
+  height: 240px;
 }
 
-#img-card {
+.thumbnail-map-products {
+  /* C'est l'image qui doit avoir width et height défini et object-fit */
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /*avec contain, l'image apparait à 100% mais s'ajuste à la dimension donnée*/
+  /*Avec cover: l'image s'ajuste à la dimension donnée, mais peut perdre une partie si trop grande*/
   border-radius: 10px 10px 0 0;
+
 }
 
-
-.product-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 160px
+.div-text-products {
+  margin-top: -10px;
+  text-align: center;
 }
 
-.product-text p {
-  margin-bottom: 15px;
-  border-bottom: 1px solid rgb(255, 0, 0);
-}
-
-.product-auteur,
-.product-price {
+.product-auteur {
   color: #0072B5;
-  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.product-info {
-  display: flex;
-  align-items: center;
-  height: 38px;
-  color: #363945;
-  justify-content: center;
-  font-family: 'Martian Mono', monospace;
-  font-size: 18px;
+.product-infoProduit {
+  margin-bottom: 20px;
+  color: #ff0921;
 }
 
-.cart-btn-div {
-  border: 2px solid green;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  
+
+.product-prix {
+  color: #0072B5;
+
+
 }
 
-#cart-button {
+.button-add {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 145px;
-  margin: 0; 
+  margin-bottom: -1px;
+  border-radius: 0px;
+  height: 45px;
 }
+
+
+
+

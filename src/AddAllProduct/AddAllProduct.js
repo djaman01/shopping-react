@@ -14,17 +14,19 @@ export default function AddAllProduct() {
   const [auteur, setauteur] = useState(''); //setAuteur dans onChange
   const [type, setType] = useState('');
   const [infoProduit, setInfoProduit] = useState('');
+  const [quantity, setQuantity] = useState();
   const [prix, setPrix] = useState('');
 
   //To submit all form data to the server with .post
   const handleSubmit = async (e) => {
     //Pour interdire l'envoie si on ne rempli pas un champ de addProduct
-    if (imageUrl && auteur && type && infoProduit && prix ) {
+    if (imageUrl && auteur && type && infoProduit && quantity && prix ) {
       const formData = new FormData(); //Vu qu'on envoie un file, on utilise la method FormData() pour créer un objet avec key-values, et tout envoyer en 1 fois
       formData.append('file', imageUrl);// 'file"=property / imageUrl= Value = state variable
       formData.append('auteur', auteur);
       formData.append('type', type);
       formData.append('infoProduit', infoProduit);
+      formData.append('quantity', quantity);
       formData.append('prix', prix);
 
       try {
@@ -85,6 +87,17 @@ export default function AddAllProduct() {
                 id="info-produit"
                 value={infoProduit}
                 onChange={(e) => setInfoProduit(e.target.value)}
+              />
+            </div>
+
+            <div className='div-add-product'>
+              <input
+                className="input-product"
+                placeholder="Quantity Produit"
+                type="text"
+                id="quanity"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
 

@@ -11,7 +11,9 @@ export default function Main() {
   return (
     <div>
       <Header />
-      <HomeGet />
+      <HomeGet />  
+     
+    
   
     </div>
   )

@@ -14,12 +14,30 @@ export default function HomeGet() {
     .catch(()=>setErrorMsg('An Error occured while fetching data'))
   }, [])
 
+  const [cartItems, setCartItems] = useState ([]);
+
+  const handleAddToCart = (newItem) => {
+   
+    const isItemInCart = cartItems.find((e) => newItem.infoProduit === e.infoProduit);
+  
+    if (!isItemInCart) {
+      setCartItems((cartItems) => [...cartItems, newItem]);
+    //comme c'est asynchrone il faut mettre console.log dans un useEffect pour que ça se passe après mise à jour (metter cartItems en dependency)
+    }
+  };
+  
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems]);
+
+
 
   return (
     <div>
       <PropsModel
        productsArr={homeProducts}
        error={errorMsg}
+       addToCart={handleAddToCart}
       />
 
     </div>
