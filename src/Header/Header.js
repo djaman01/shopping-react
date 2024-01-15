@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom"
 import "./header.css"
 
-export default function Header() {
+import { IoCartOutline } from "react-icons/io5";
+
+export default function Header({cartItems}) {
+
+const scrollToBottom = () => {
+  console.log("Scrolling to bottom!");
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  })
+}
+
+  
   return (
     <>
 
       <nav className="header-nav">
         <Link to='/addAllProduct'>
-        <ul>
-          <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
-        </ul>
+          <ul>
+            <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
+          </ul>
         </Link>
 
         <ul>
@@ -23,7 +35,16 @@ export default function Header() {
             </ul>
           </li>
           <li>about</li>
+
+          <div className="cart-header">
+            <IoCartOutline onClick={scrollToBottom} size={25} />
+            <div>
+              <span>{cartItems.length === 0 ? "" : cartItems.length}</span>
+            </div>
+          </div>
         </ul>
+
+
       </nav>
 
 

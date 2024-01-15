@@ -1,33 +1,29 @@
 import { useEffect, useState } from "react"
 import PropsModel from "../PropsModel/PropsModel"
 import axios from "axios";
-import './homeGet.css'
+import "./homeGet.css"
 
-export default function HomeGet() {
+export default function HomeGet({ cartItems, setCartItems }) {
 
   const [homeProducts, setHomeProducts] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
 
-  useEffect (()=>{
+  useEffect(() => {
     axios.get(`http://localhost:3005/homeProducts?limit=20`)
-    .then((response)=>setHomeProducts(response.data))
-    .catch(()=>setErrorMsg('An Error occured while fetching data'))
+      .then((response) => setHomeProducts(response.data))
+      .catch(() => setErrorMsg('An Error occured while fetching data'))
   }, [])
 
 
-
-
-//For the shopping cart
-const [cartItems, setCartItems] = useState([]); // Pour store les produits sélectionnés
-
-//But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
+  //cartItems et setCartItems sont set in the <Main /> Component, pour pouvoir utiliser cartItems dans plusieurs component
+  //But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
   const handleAddToCart = (newItem) => { //Valeur paramètre est donné lors de l'appel de la function handleAddToCart quand on clique
 
-    const isItemInCart = cartItems.find ((e)=> e.auteur === newItem.auteur) //Cherche si Nom item est déjà dans l'array cartItems
+    const isItemInCart = cartItems.find((e) => e.auteur === newItem.auteur) //Cherche si Nom item est déjà dans l'array cartItems
 
-    if(isItemInCart===undefined) {//Possible de faire (!isIteminCart) = si name item clicked pas dans l'array cartItems, alors ajoute le dans une copie
-      setCartItems((e)=>[...e, newItem]) //States in react are immutable => On ajoute l'item à la fin d'une une copie {...e} de l'array de cartItems
-    }   
+    if (isItemInCart === undefined) {//Possible de faire (!isIteminCart) = si name item clicked pas dans l'array cartItems, alors ajoute le dans une copie
+      setCartItems((e) => [...e, newItem]) //States in react are immutable => On ajoute l'item à la fin d'une une copie {...e} de l'array de cartItems
+    }
   }
 
   useEffect(() => {
@@ -70,13 +66,13 @@ const [cartItems, setCartItems] = useState([]); // Pour store les produits séle
   return (
     <div>
       <PropsModel
-       productsArr={homeProducts}
-       error={errorMsg}
-       addToCart={handleAddToCart}
+        productsArr={homeProducts}
+        error={errorMsg}
+        addToCart={handleAddToCart}
       />
 
-        {/* Shopping Cart */}
-        <div className="all-shop-cart">
+      {/* Shopping Cart */}
+      <div className="all-shop-cart">
         <h2 className="shop-cart-title">Shopping Cart</h2>
         {/* On map sur les produits sur lesquels on a cliqué et ajouté dans la state variable "cartItems" */}
         {/* On remplace chaque element de la cart items par tout <div></div> pour créer le shopping cart  */}
@@ -124,7 +120,7 @@ const [cartItems, setCartItems] = useState([]); // Pour store les produits séle
 
         {/* On appelle la function calculateTotalGeneral pour avoir le total géneral */}
         <div className="total-general">
-          <h4>Total General: <span style={{color:'#00A170'}}>{calculateTotalGeneral()}</span></h4> 
+          <h4>Total General: <span style={{ color: '#00A170' }}>{calculateTotalGeneral()}</span></h4>
         </div>
       </div>
 
