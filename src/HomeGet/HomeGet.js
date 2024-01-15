@@ -5,6 +5,7 @@ import "./homeGet.css"
 
 export default function HomeGet({ cartItems, setCartItems }) {
 
+  //Pour le search input
   const [homeProducts, setHomeProducts] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
 
