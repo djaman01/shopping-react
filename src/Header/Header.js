@@ -3,7 +3,11 @@ import "./header.css"
 
 import { IoCartOutline } from "react-icons/io5";
 
-export default function Header({ cartItems }) {
+import { useMyContext } from "../ContextComp/ContextComp";
+
+export default function Header() {
+
+  const {cartItems} = useMyContext();
 
   //To scroll to the bottom of the page
   const scrollToBottom = () => {

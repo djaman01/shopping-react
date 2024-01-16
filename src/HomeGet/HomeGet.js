@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import PropsModel from "../PropsModel/PropsModel"
 import axios from "axios";
 import "./homeGet.css"
+import { useMyContext } from "../ContextComp/ContextComp";
 
-export default function HomeGet({ cartItems, setCartItems }) {
+export default function HomeGet() {
 
   //Pour le search input
   const [homeProducts, setHomeProducts] = useState([]);
@@ -14,7 +15,9 @@ export default function HomeGet({ cartItems, setCartItems }) {
       .then((response) => setHomeProducts(response.data))
       .catch(() => setErrorMsg('An Error occured while fetching data'))
   }, [])
+//Fin search input
 
+const {cartItems, setCartItems} = useMyContext();
 
   //cartItems et setCartItems sont set in the <Main /> Component, pour pouvoir utiliser cartItems dans plusieurs component
   //But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
