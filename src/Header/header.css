@@ -16,6 +16,26 @@ li {
 }
 
 .cart-header {
+
   margin-left: 50px;
   cursor: pointer;
+  position: relative;
+  padding-right: 8px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+
+}
+
+/* styling item count */
+.item-count {
+ position: absolute;
+ top: 0; /* Adjust this value as needed */
+ right: 0;
+ background-color: red;
+ color: white;
+ border-radius: 50%;
+ padding: 0.1em 0.4em; /*0.2em = 20% of the font-size of the element  */
+ font-size: 12px;
+
 }

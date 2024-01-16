@@ -47,16 +47,13 @@ export default function Header() {
             <div className="cart-header">
               <IoCartOutline size={25} />
               <div>
-                <span>{cartItems.length === 0 ? "" : cartItems.length}</span>
+                <span className={cartItems.length===0 ? '':'item-count'}>{cartItems.length === 0 ? "" : cartItems.length}</span>
               </div>
             </div>
           </Link>
         </ul>
 
-
       </nav>
-
-
 
     </>
   )
