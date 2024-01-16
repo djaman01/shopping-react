@@ -3,17 +3,18 @@ import "./header.css"
 
 import { IoCartOutline } from "react-icons/io5";
 
-export default function Header({cartItems}) {
+export default function Header({ cartItems }) {
 
-const scrollToBottom = () => {
-  console.log("Scrolling to bottom!");
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: "smooth"
-  })
-}
+  //To scroll to the bottom of the page
+  const scrollToBottom = () => {
+    console.log("Scrolling to bottom!");
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    })
+  }
 
-  
+
   return (
     <>
 
