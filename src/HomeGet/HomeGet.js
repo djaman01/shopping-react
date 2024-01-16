@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import PropsModel from "../PropsModel/PropsModel"
 import axios from "axios";
 import "./homeGet.css"
+
 import { useMyContext } from "../ContextComp";
 
 export default function HomeGet() {
 
-  //Pour le search input
+  //Pour Mapper sur les produits dans database (voir PropsModel) + search input
   const [homeProducts, setHomeProducts] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -15,7 +16,7 @@ export default function HomeGet() {
       .then((response) => setHomeProducts(response.data))
       .catch(() => setErrorMsg('An Error occured while fetching data'))
   }, [])
-//Fin search input
+
 
 const {cartItems, setCartItems} = useMyContext();
 
