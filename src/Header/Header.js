@@ -3,11 +3,11 @@ import "./header.css"
 
 import { IoCartOutline } from "react-icons/io5";
 
-import { useMyContext } from "../ContextComp/ContextComp";
+import { useMyContext } from "../ContextComp";
 
 export default function Header() {
 
-  const {cartItems} = useMyContext();
+  const { cartItems } = useMyContext();
 
   //To scroll to the bottom of the page
   const scrollToBottom = () => {
@@ -39,14 +39,18 @@ export default function Header() {
               <li>Kids</li>
             </ul>
           </li>
-          <li>about</li>
 
-          <div className="cart-header">
-            <IoCartOutline onClick={scrollToBottom} size={25} />
-            <div>
-              <span>{cartItems.length === 0 ? "" : cartItems.length}</span>
+
+          <li onClick={scrollToBottom}>Scroll to Cart</li>
+
+          <Link to='/shopCart'>
+            <div className="cart-header">
+              <IoCartOutline size={25} />
+              <div>
+                <span>{cartItems.length === 0 ? "" : cartItems.length}</span>
+              </div>
             </div>
-          </div>
+          </Link>
         </ul>
 
 

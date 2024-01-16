@@ -1,38 +1,9 @@
-import { useEffect, useState } from "react"
-import PropsModel from "../PropsModel/PropsModel"
-import axios from "axios";
-import "./homeGet.css"
-import { useMyContext } from "../ContextComp";
+import { useState } from "react"
+import { useMyContext } from "../ContextComp"
 
-export default function HomeGet() {
+export default function ShoppingCart() {
 
-  //Pour le search input
-  const [homeProducts, setHomeProducts] = useState([]);
-  const [errorMsg, setErrorMsg] = useState('');
-
-  useEffect(() => {
-    axios.get(`http://localhost:3005/homeProducts?limit=20`)
-      .then((response) => setHomeProducts(response.data))
-      .catch(() => setErrorMsg('An Error occured while fetching data'))
-  }, [])
-//Fin search input
-
-const {cartItems, setCartItems} = useMyContext();
-
-  //cartItems et setCartItems sont set in the <Main /> Component, pour pouvoir utiliser cartItems dans plusieurs component
-  //But: Clique sur addToCart => Store elements of the card clicked in "cartItems" state => To map on it for ShoppingCart
-  const handleAddToCart = (newItem) => { //Valeur paramètre est donné lors de l'appel de la function handleAddToCart quand on clique
-
-    const isItemInCart = cartItems.find((e) => e.auteur === newItem.auteur) //Cherche si Nom item est déjà dans l'array cartItems
-
-    if (isItemInCart === undefined) {//Possible de faire (!isIteminCart) = si name item clicked pas dans l'array cartItems, alors ajoute le dans une copie
-      setCartItems((e) => [...e, newItem]) //States in react are immutable => On ajoute l'item à la fin d'une une copie {...e} de l'array de cartItems
-    }
-  }
-
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const { cartItems, setCartItems } = useMyContext();
 
 
   //Pour update la property quantity quand on augmente le nombre de l'input et ainsi pouvoir plutard calculé le total
@@ -61,19 +32,9 @@ const {cartItems, setCartItems} = useMyContext();
     setCartItems(removeArray);
   }
 
-  useEffect(() => {
-    document.title = `Shopping cart`;
-  }, []);
-
-
 
   return (
-    <div>
-      <PropsModel
-        productsArr={homeProducts}
-        error={errorMsg}
-        addToCart={handleAddToCart}
-      />
+    <>
 
       {/* Shopping Cart */}
       <div className="all-shop-cart">
@@ -128,6 +89,6 @@ const {cartItems, setCartItems} = useMyContext();
         </div>
       </div>
 
-    </div>
+    </>
   )
 }
