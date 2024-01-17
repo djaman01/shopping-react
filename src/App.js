@@ -4,6 +4,7 @@ import NoPage from "./NoPage";
 import '@picocss/pico';
 import AddAllProduct from "./AddAllProduct/AddAllProduct";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import Dashboard from "./Dashboard/Dashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Main />} /> 
         <Route path="addAllProduct" element={<AddAllProduct/>} /> 
         <Route path="shopCart" element={<ShoppingCart/>} /> 
+        <Route path="dashboard" element={<Dashboard/>} /> 
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

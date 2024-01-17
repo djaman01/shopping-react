@@ -39,6 +39,9 @@ export default function Header() {
               <li>Kids</li>
             </ul>
           </li>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
 
 
           <li onClick={scrollToBottom}>Scroll to Cart</li>
@@ -47,7 +50,7 @@ export default function Header() {
             <div className="cart-header">
               <IoCartOutline size={25} />
               <div>
-                <span className={cartItems.length===0 ? '':'item-count'}>{cartItems.length === 0 ? "" : cartItems.length}</span>
+                <span className={cartItems.length === 0 ? '' : 'item-count'}>{cartItems.length === 0 ? "" : cartItems.length}</span>
               </div>
             </div>
           </Link>
