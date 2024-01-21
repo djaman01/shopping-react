@@ -4,9 +4,13 @@ import DataTable from "react-data-table-component"
 
 import { StyleSheetManager } from 'styled-components'; //Pour eviter les erreurs de styled props dans la console
 
+import { FaRegPenToSquare } from "react-icons/fa6";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 
 export default function Dashboard() {
+
+  //Pour GET Request pour display les products à l'ouverture de la page: donc on va utiliser useEffect et []
 
   const [products, setProducts] = useState([]); //A mettre dans data attribute du <DataTable /> Component dans return
   const [error, setErrorMsg] = useState('') // A ecrire en condition à dans le return si produit non fetched
@@ -16,6 +20,15 @@ export default function Dashboard() {
       .then(response => setProducts(response.data))
       .catch(() => setErrorMsg("error while fetching data"))
   }, [])
+
+  //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
+
+  const [productId, setProductId] = useState(null); //Pour que quand on clique sur style ou cancel, apporte des changements
+  
+  const [productPrice, setProductPrice] = useState('');
+  const [productQuantity, setProductQuantity] = useState('');
+
+
 
   //Création database avec npm react data table component--------------------------------------
 
@@ -49,6 +62,17 @@ export default function Dashboard() {
     {
       name: 'Actions',
       selector: row => row._id,//_id donné par MongoDB: Pour selectionner 1 produit spécifique
+      //Objetcif: Si state productId = null alors on voit 1 stylo et 1 poubelle / Sinon on voit 1 btn update et 1 btn cancel
+      cell: row => productId === null ?
+        <div>
+          <FaRegPenToSquare onClick={() => setProductId(row._id)} />
+          <FaRegTrashAlt/>
+        </div>
+        : //Si on clique sur stylo et qu'on donne une valeur à la state product_id (ne pas mettre de condition sinon ça ne changera que la ligne selectionnée)
+        <div>
+          <p role="button"> Update </p>
+          <p role="button" onClick={()=>setProductId(null)} > Cancel </p>
+        </div>
     },
   ];
 
