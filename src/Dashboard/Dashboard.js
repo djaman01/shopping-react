@@ -11,7 +11,6 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export default function Dashboard() {
 
   //Pour GET Request pour display les products à l'ouverture de la page: donc on va utiliser useEffect et []
-
   const [products, setProducts] = useState([]); //A mettre dans data attribute du <DataTable /> Component dans return
   const [error, setErrorMsg] = useState('') // A ecrire en condition à dans le return si produit non fetched
 
@@ -28,6 +27,12 @@ export default function Dashboard() {
   //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
+
+  //On donne aux VALEURS des propriétés prix et quantité de la database, les 2 states variables précédentes que l'on peut changer
+  const updatedProducts = {
+    prix: productPrice,
+    quantité: productQuantity,
+  }
 
 
 
@@ -55,25 +60,52 @@ export default function Dashboard() {
     {
       name: 'Quantité',
       selector: row => row.quantity,
+
+      //Objectif: si productId===row._id alors fait apparaitre un input pour changer la valeur, sinon on ne voit que la quantité
+      cell: row => productId === row._id ?
+        <div>
+          <input
+            placeholder="New Quantity"
+            value={productQuantity}
+            onChange={(e) => setProductQuantity(e.target.value)} //productQuantity se met à jour en même temps que ce qu'on écrit dans l'input
+          />
+        </div>
+        :
+        row.quantity
     },
     {
       name: 'Prix',
       selector: row => row.prix,
+      //Objectif: si productId===row._id alors fait apparaitre un input pour changer la valeur, sinon on ne voit que le prix
+      cell: row => productId === row._id ?
+        <div>
+          <input
+            placeholder="New Price"
+            value={productPrice}
+            onChange={(e) => setProductPrice(e.target.value)} //productPrice se met à jour en même temps que ce qu'on écrit dans l'input
+          />
+        </div>
+        :
+        row.prix
     },
+
     {
       name: 'Actions',
       selector: row => row._id,//_id donné par MongoDB: Pour selectionner 1 produit spécifique
-      //Objetcif: Si state productId = null alors on voit 1 stylo et 1 poubelle / Sinon on voit 1 btn update et 1 btn cancel
-      cell: row => productId === null ?
-        <div>
-          <FaRegPenToSquare onClick={() => setProductId(row._id)} />
-          <FaRegTrashAlt />
-        </div>
-        : //Si on clique sur stylo et qu'on donne une valeur à la state product_id (ne pas mettre de condition sinon ça ne changera que la ligne selectionnée)
+
+      //Obligé de faire dans cet ordre pour que ça n’affecte que la row selectionnée
+      cell: row => productId === row._id ?
         <div>
           <p role="button"> Update </p>
           <p role="button" onClick={() => setProductId(null)} > Cancel </p>
         </div>
+        :
+        <div>
+          <FaRegPenToSquare onClick={() => setProductId(row._id)} />
+          <FaRegTrashAlt />
+        </div>
+      //Si on clique sur stylo et qu'on donne une valeur à la state product_id
+
     },
   ];
 
