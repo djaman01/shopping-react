@@ -21,10 +21,11 @@ export default function Dashboard() {
       .catch(() => setErrorMsg("error while fetching data"))
   }, [])
 
-  //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
 
-  const [productId, setProductId] = useState(null); //Pour que quand on clique sur style ou cancel, apporte des changements
-  
+  //Pour que quand on clique sur stylo ou cancel, apporte des changements
+  const [productId, setProductId] = useState(null);
+
+  //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
 
@@ -66,12 +67,12 @@ export default function Dashboard() {
       cell: row => productId === null ?
         <div>
           <FaRegPenToSquare onClick={() => setProductId(row._id)} />
-          <FaRegTrashAlt/>
+          <FaRegTrashAlt />
         </div>
         : //Si on clique sur stylo et qu'on donne une valeur à la state product_id (ne pas mettre de condition sinon ça ne changera que la ligne selectionnée)
         <div>
           <p role="button"> Update </p>
-          <p role="button" onClick={()=>setProductId(null)} > Cancel </p>
+          <p role="button" onClick={() => setProductId(null)} > Cancel </p>
         </div>
     },
   ];
