@@ -10,7 +10,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Dashboard() {
 
-  //Pour GET Request pour display les products à l'ouverture de la page: donc on va utiliser useEffect et []
+  //Pour GET Request: products state va contenir tous les produits de la database 
   const [products, setProducts] = useState([]); //A mettre dans data attribute du <DataTable /> Component dans return
   const [error, setErrorMsg] = useState('') // A ecrire en condition à dans le return si produit non fetched
 
@@ -18,7 +18,8 @@ export default function Dashboard() {
     axios.get('http://localhost:3005/allProducts')
       .then(response => setProducts(response.data))
       .catch(() => setErrorMsg("error while fetching data"))
-  }, [])
+  }, [products])//!![] = Ne va get products que lors de l'ouverture de la page, donc si on fait des modif, il faudra refresh pour les voir dans la page / [products] va appeler GET a chaque changement dans la state products, donc quand on va faire un chgt dans un produit, ça va réaffiché le chgt sasn actualiser
+
 
 
   //Pour que quand on clique sur stylo ou cancel, apporte des changements
@@ -29,9 +30,22 @@ export default function Dashboard() {
   const [productQuantity, setProductQuantity] = useState('');
 
   //On donne aux VALEURS des propriétés prix et quantité de la database, les 2 states variables précédentes que l'on peut changer
-  const updatedProducts = {
+  const updatedProductData = {
     prix: productPrice,
-    quantité: productQuantity,
+    quantity: productQuantity,
+  }
+  //C'est le bouton update qui doit appeler cette function, avec pour argument row._id, pour appliquer la modif.
+  const handleUpdates = (productId) => {
+    
+    axios.put(`http://localhost:3005/putDash/${productId}`, updatedProductData)
+      .then((response) => {
+        console.log('product updated successfully', response.data)
+        setProductId(null);
+      })
+      .catch((error) => {
+        console.error('Error updating product:', error); //Pour voir dans la console
+        setErrorMsg('error while fetching products'); //Pour mettre à jour le state error définit précédemment
+      });
   }
 
 
@@ -96,7 +110,7 @@ export default function Dashboard() {
       //Obligé de faire dans cet ordre pour que ça n’affecte que la row selectionnée
       cell: row => productId === row._id ?
         <div>
-          <p role="button"> Update </p>
+          <p role="button" onClick={() => handleUpdates(row._id)}> Update </p>
           <p role="button" onClick={() => setProductId(null)} > Cancel </p>
         </div>
         :
