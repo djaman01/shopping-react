@@ -7,6 +7,8 @@ import { StyleSheetManager } from 'styled-components'; //Pour eviter les erreurs
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 
+import './dashboard.css'
+
 
 export default function Dashboard() {
 
@@ -54,7 +56,6 @@ export default function Dashboard() {
         setErrorMsg('error while fetching products'); //Pour mettre à jour le state error définit précédemment
       });
   }
-
 
 
   //Création database avec npm react data table component--------------------------------------
@@ -121,16 +122,13 @@ export default function Dashboard() {
           <p role="button" onClick={() => setProductId(null)} > Cancel </p>
         </div>
         :
-        <div>
-          <FaRegPenToSquare onClick={() => handleEditClick(row)} />  {/* Click sur stylo= appel functiin handleEditClick avec argument row selectionnée*/}
-          <FaRegTrashAlt />
+        <div className="pen-trash-icones">
+          <FaRegPenToSquare size={17} onClick={() => handleEditClick(row)} />  {/* Click sur stylo= appel functiin handleEditClick avec argument row selectionnée*/}
+          <FaRegTrashAlt size={17}/>
         </div>
 
     },
   ];
-
-
-
 
   const shouldForwardProp = (prop) => prop !== 'sortActive'; //Pour éviter les erreurs des styled components, dans la console
 

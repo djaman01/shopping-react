@@ -1,0 +1,6 @@
+.pen-trash-icones {
+  width: 70px;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
