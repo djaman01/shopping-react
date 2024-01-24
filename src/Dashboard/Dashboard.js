@@ -57,7 +57,21 @@ export default function Dashboard() {
       });
   }
 
+  //Pour DELETE request et supprimer un élement selectionné; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
 
+  const handleDelete = (productId) => {
+    axios.delete(`http://localhost:3005/deleteElement/${productId}`)
+    .then((response) => {
+      setProducts(products.filter((element)=> element._id !== productId)) //productId a pour valeur l'id du produit, donc on le compare à element._id
+      console.log('product successfully deleted', response.data);
+    })
+    .catch((error) => {
+      console.error ('impossible to delete product', error)
+      setErrorMsg ('error while fetching products')
+    }
+    )
+  }
+  
   //Création database avec npm react data table component--------------------------------------
 
   const columns = [
@@ -82,7 +96,6 @@ export default function Dashboard() {
     {
       name: 'Quantité',
       selector: row => row.quantity,
-
       //Objectif: si productId===row._id alors fait apparaitre un input pour changer la valeur, sinon on ne voit que la quantité
       cell: row => productId === row._id ?
         <div>
@@ -124,7 +137,7 @@ export default function Dashboard() {
         :
         <div className="pen-trash-icones">
           <FaRegPenToSquare size={17} onClick={() => handleEditClick(row)} />  {/* Click sur stylo= appel functiin handleEditClick avec argument row selectionnée*/}
-          <FaRegTrashAlt size={17}/>
+          <FaRegTrashAlt size={17} onClick={()=>handleDelete(row._id)}/>
         </div>
 
     },
