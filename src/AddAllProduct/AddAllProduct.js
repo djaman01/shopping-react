@@ -14,7 +14,7 @@ export default function AddAllProduct() {
   const [auteur, setauteur] = useState(''); //setAuteur dans onChange
   const [type, setType] = useState('');
   const [infoProduit, setInfoProduit] = useState('');
-  const [quantity, setQuantity] = useState();
+  const [quantity, setQuantity] = useState('');
   const [prix, setPrix] = useState('');
 
   //To submit all form data to the server with .post
