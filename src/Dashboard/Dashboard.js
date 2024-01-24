@@ -11,6 +11,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export default function Dashboard() {
 
   //Pour GET Request: products state va contenir tous les produits de la database 
+
   const [products, setProducts] = useState([]); //A mettre dans data attribute du <DataTable /> Component dans return
   const [error, setErrorMsg] = useState('') // A ecrire en condition à dans le return si produit non fetched
 
@@ -21,13 +22,20 @@ export default function Dashboard() {
   }, [products])//!![] = Ne va get products que lors de l'ouverture de la page, donc si on fait des modif, il faudra refresh pour les voir dans la page / [products] va appeler GET a chaque changement dans la state products, donc quand on va faire un chgt dans un produit, ça va réaffiché le chgt sasn actualiser
 
 
+  //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
+ 
+  const [productPrice, setProductPrice] = useState('');
+  const [productQuantity, setProductQuantity] = useState('');
 
   //Pour que quand on clique sur stylo ou cancel, apporte des changements
   const [productId, setProductId] = useState(null);
 
-  //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
-  const [productPrice, setProductPrice] = useState('');
-  const [productQuantity, setProductQuantity] = useState('');
+  //Function to set the productId and initial values for quantity and price
+  const handleEditClick = (row) => {
+    setProductId(row._id);
+    setProductQuantity(row.quantity);
+    setProductPrice(row.prix);
+  };
 
   //On donne aux VALEURS des propriétés prix et quantité de la database, les 2 states variables précédentes que l'on peut changer
   const updatedProductData = {
@@ -36,7 +44,6 @@ export default function Dashboard() {
   }
   //C'est le bouton update qui doit appeler cette function, avec pour argument row._id, pour appliquer la modif.
   const handleUpdates = (productId) => {
-    
     axios.put(`http://localhost:3005/putDash/${productId}`, updatedProductData)
       .then((response) => {
         console.log('product updated successfully', response.data)
@@ -115,10 +122,9 @@ export default function Dashboard() {
         </div>
         :
         <div>
-          <FaRegPenToSquare onClick={() => setProductId(row._id)} />
+          <FaRegPenToSquare onClick={() => handleEditClick(row)} />  {/* Click sur stylo= appel functiin handleEditClick avec argument row selectionnée*/}
           <FaRegTrashAlt />
         </div>
-      //Si on clique sur stylo et qu'on donne une valeur à la state product_id
 
     },
   ];
