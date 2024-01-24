@@ -34,7 +34,7 @@ export default function Dashboard() {
 
   //Function to set the productId and initial values for quantity and price
   const handleEditClick = (row) => {
-    setProductId(row._id);
+    setProductId(row._id);  //Pour définir su on voit l'input quand on clique sur le stylo ou cancel
     setProductQuantity(row.quantity);
     setProductPrice(row.prix);
   };
