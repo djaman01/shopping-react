@@ -25,7 +25,7 @@ export default function Dashboard() {
 
 
   //Pour PUT request et modifier certains élements selectionnés; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
- 
+
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
 
@@ -48,30 +48,36 @@ export default function Dashboard() {
   const handleUpdates = (productId) => {
     axios.put(`http://localhost:3005/putDash/${productId}`, updatedProductData)
       .then((response) => {
-        console.log('product updated successfully', response.data)
+        console.log(response.data)//Montre ce qu'on a codé dans le server: res.json({message:'', stateProduc}), dans la console du browser
         setProductId(null);
       })
       .catch((error) => {
-        console.error('Error updating product:', error); //Pour voir dans la console
-        setErrorMsg('error while fetching products'); //Pour mettre à jour le state error définit précédemment
+        console.error("Front-end error or unexpected issue:", error.message);
+      })
+      .catch((error) => { console.error( error.response &&
+          `${error.response.status}: ${error.response.data.message}`
+        );
       });
+      
   }
 
   //Pour DELETE request et supprimer un élement selectionné; donc stocker l'arrow function dans une variable qu'on va appeler avec un paramètre pour cibler le produit
 
   const handleDelete = (productId) => {
     axios.delete(`http://localhost:3005/deleteElement/${productId}`)
-    .then((response) => {
-      setProducts(products.filter((element)=> element._id !== productId)) //productId a pour valeur l'id du produit, donc on le compare à element._id
-      console.log('product successfully deleted', response.data);
-    })
-    .catch((error) => {
-      console.error ('impossible to delete product', error)
-      setErrorMsg ('error while fetching products')
-    }
-    )
+      .then((response) => {
+        setProducts(products.filter((element) => element._id !== productId)) //productId a pour valeur l'id du produit, donc on le compare à element._id
+        console.log(response.data); //message = property codé dans res.status(200).json({message:""}) = ok dans le server
+      })
+      .catch((error) => {
+        console.error("Front-end error or unexpected issue:", error.message);
+      })
+      .catch((error) => { console.error( error.response &&
+        `${error.response.status}: ${error.response.data.message}`
+      );
+    });
   }
-  
+
   //Création database avec npm react data table component--------------------------------------
 
   const columns = [
@@ -137,7 +143,7 @@ export default function Dashboard() {
         :
         <div className="pen-trash-icones">
           <FaRegPenToSquare size={17} onClick={() => handleEditClick(row)} />  {/* Click sur stylo= appel functiin handleEditClick avec argument row selectionnée*/}
-          <FaRegTrashAlt size={17} onClick={()=>handleDelete(row._id)}/>
+          <FaRegTrashAlt size={17} onClick={() => handleDelete(row._id)} />
         </div>
 
     },
