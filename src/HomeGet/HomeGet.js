@@ -70,11 +70,13 @@ const {cartItems, setCartItems} = useMyContext();
 
   return (
     <div>
+   
       <PropsModel
         productsArr={homeProducts}
         error={errorMsg}
         addToCart={handleAddToCart}
       />
+    
 
       {/* Shopping Cart */}
       <div className="all-shop-cart">

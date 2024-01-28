@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './propsModel.css'
+import { Link } from 'react-router-dom'
 
 export default function PropsModel({ productsArr, error, addToCart }) { //productsArr= props array sur laquel on va mapper poru chaque component
 
@@ -21,28 +22,31 @@ export default function PropsModel({ productsArr, error, addToCart }) { //produc
           <div className="grid-map-products">
             {filteredArr.map((element) =>
 
-              <div className="item-map-products" key={element._id}>
+              <Link key={element._id} to={`/ficheProduit/${element._id}`}>
 
-                <div className="div-thumbnail-map-products">
-                  <img
-                    className='thumbnail-map-products'
-                    src={`http://localhost:3005/${element.imageUrl}`}
-                    alt={element.auteur}
-                  />
+                <div className="item-map-products" key={element._id}>
+
+                  <div className="div-thumbnail-map-products">
+                    <img
+                      className='thumbnail-map-products'
+                      src={`http://localhost:3005/${element.imageUrl}`}
+                      alt={element.auteur}
+                    />
+                  </div>
+
+
+                  <div className="div-text-products">
+                    <p className='product-auteur'>{element.auteur}</p>
+                    <p className='product-infoProduit'>{element.infoProduit}</p>
+                    <p className='product-prix'>{element.prix}</p>
+                  </div>
+
+                  <div>
+                    <button className='button-add' onClick={() => addToCart(element)}>Add to List</button>
+                  </div>
+
                 </div>
-
-
-                <div className="div-text-products">
-                  <p className='product-auteur'>{element.auteur}</p>
-                  <p className='product-infoProduit'>{element.infoProduit}</p>
-                  <p className='product-prix'>{element.prix}</p>
-                </div>
-
-                <div>
-                  <button className='button-add' onClick={() => addToCart(element)}>Add to List</button>
-                </div>
-
-              </div>
+              </Link>
 
             )}
           </div>
