@@ -8,10 +8,10 @@ export default function FicheProduit() {
   const [product, setProduct] = useState(null);
   const [errorMsg, setErrorMsg] = useState('')
 
-  const { productId } = useParams()
+  const { productId } = useParams() // pour extraire la valeur du paramètre productId de l'URL, définit dans app.js et dont on a donné une valeur dans PropsModel.js
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/article/${productId}`)
+    axios.get(`http://localhost:3005/article/${productId}`) //Utilisation valeur paramètre pour effecture une requête API et récupérer les données du produit correspondant à cet ID
 
       .then((response) => setProduct(response.data))
 
