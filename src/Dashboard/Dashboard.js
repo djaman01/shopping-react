@@ -52,7 +52,7 @@ export default function Dashboard() {
         setProductId(null);
       })
       .catch((error) => {
-        console.error("Front-end error or unexpected issue:", error.message);
+        console.error("Front-end error:", error.message);
       })
       .catch((error) => { console.error( error.response &&
           `${error.response.status}: ${error.response.data.message}`

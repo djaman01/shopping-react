@@ -8,12 +8,14 @@ export default function PropsModel({ productsArr, error, addToCart }) { //produc
   const handleInput = (e) => {
     setValueInput(e.target.value)
   }
+
+  //Pour que le search inpu soit lié au produit qui apparaissent sur le site
   const filteredArr = productsArr.filter((e) => e.auteur.toLowerCase().includes(valueInput.toLowerCase()))
 
   return (
     <>
       <div className="div-input-home">
-        <input type="search" placeholder="Name of product" id="search-input" value={valueInput} onChange={handleInput} />
+        <input type="search" placeholder="Type a Brand" id="search-input" value={valueInput} onChange={handleInput} />
       </div>
 
       <div className='all-products'>

@@ -6,6 +6,7 @@ import AddAllProduct from "./AddAllProduct/AddAllProduct";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Dashboard from "./Dashboard/Dashboard";
 import FicheProduit from "./FicheProduit/FicheProduit";
+import Chemise from "./Chemises/Chemise";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="shopCart" element={<ShoppingCart/>} /> 
         <Route path="addProduct" element={<AddAllProduct />} />
         <Route path="dashboard" element={<Dashboard/>} /> 
+        <Route path="chemise" element={<Chemise/>} /> 
         <Route path="ficheProduit/:productId" element={<FicheProduit/>} /> {/* /:productid = paramètre dynamique */}
         <Route path="*" element={<NoPage />} />
       </Routes>
