@@ -27,9 +27,9 @@ export default function Header() {
           <li role="list" dir="rtl">
             <a href="#" aria-haspopup="listbox">Categories</a>
             <ul role="listbox" >
-              <li>Men</li>
-              <li>Women</li>
-              <li>Kids</li>
+              <li>Chemises</li>
+              <li>Pantalon</li>
+              <li>Sport</li>
             </ul>
           </li>
 

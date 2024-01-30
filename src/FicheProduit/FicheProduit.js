@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import Header from "../Header/Header";
 import { useParams } from "react-router-dom";
 
+import './ficheProduit.css'
+
 export default function FicheProduit() {
 
   const [product, setProduct] = useState(null);
@@ -37,18 +39,19 @@ export default function FicheProduit() {
 
       <Header />
       {errorMsg ? <p>{errorMsg}</p> : product ? (
-        <div>
 
-          <div>
+        <div className="all-fiche-produit">
+
+          <div className="div-image-fiche">
             <img src={`http://localhost:3005/${product.imageUrl}`} alt={product.type} />
           </div>
 
-          <div>
-            <h1>{product.type}</h1>
-            <h2>{product.auteur}</h2>
-            <h2>{product.infoProduit}</h2>
-            <h3>{product.prix} Dhs</h3>
-            <h3>{product.quantity}</h3>
+          <div className="div-infos-produits">
+            <h1 className="descri-produit type-produit">{product.type}</h1>
+            <h2 className="descri-produit auteur-produit">{product.auteur}</h2>
+            <h3 className="descri-produit">{product.infoProduit}</h3>
+            <h3 className="descri-produit prix-produit">{product.prix} Dhs</h3>
+            <h3 className="descri-produit quantity-produit">stock: {product.quantity}</h3>
           </div>
 
         </div>

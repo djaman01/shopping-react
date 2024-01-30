@@ -1,0 +1,31 @@
+.all-fiche-produit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Heebo', sans-serif;
+  margin-top: 20px;
+}
+
+.div-image-fiche {
+  width: 500px;
+  height: 600px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-left: 145px;
+}
+
+.div-infos-produits {
+  margin-top: 40px;
+  width: 500px;
+  text-align: center;
+}
+
+.descri-produit {
+  margin-bottom: 20px;
+}
+
+.type-produit, .prix-produit {
+  color: rgb(7, 7, 214);
+}
+.auteur-produit, .quantity-produit {
+  color: rgb(243, 5, 5);
+}
