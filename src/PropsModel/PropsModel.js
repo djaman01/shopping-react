@@ -24,7 +24,7 @@ export default function PropsModel({ productsArr, error, addToCart }) { //produc
 
               <div className="item-map-products" key={element._id}>
 
-                <Link key={element._id} to={`/ficheProduit/${element._id}`}>
+                <Link style={{textDecoration: "none"}} key={element._id} to={`/ficheProduit/${element._id}`}>
 
                   <div className="div-thumbnail-map-products">
                     <img

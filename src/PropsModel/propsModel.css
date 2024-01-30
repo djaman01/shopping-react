@@ -1,10 +1,11 @@
 .grid-map-products {
-    display: grid;
-    grid-template-columns: 250px 250px 250px;
-    gap: 50px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  gap: 50px;
+  justify-content: center;
 }
-.item-map-products{
+
+.item-map-products {
   border: solid 1px rgb(186, 186, 186);
   border-radius: 10px;
   width: 100%;
@@ -16,6 +17,7 @@
   cursor: pointer;
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
+  text-decoration: none;
 }
 
 .div-thumbnail-map-products {
@@ -49,6 +51,7 @@
   text-align: center;
 }
 
+
 .product-auteur {
   color: #0072B5;
   margin-top: 15px;
@@ -60,11 +63,8 @@
   color: #ff0921;
 }
 
-
 .product-prix {
   color: #0072B5;
-
-
 }
 
 .button-add {
@@ -75,7 +75,3 @@
   border-radius: 0px;
   height: 45px;
 }
-
-
-
-

@@ -45,7 +45,7 @@ const {cartItems, setCartItems} = useMyContext();
   return (
     <div>
 
-      <h1>Last products added</h1>
+      <h1 className="home-title">Last products added</h1>
    
       <PropsModel
         productsArr={homeProducts}
