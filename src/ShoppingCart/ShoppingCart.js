@@ -1,5 +1,5 @@
-import { useState } from "react"
 import { useMyContext } from "../ContextComp"
+import Header from "../Header/Header";
 
 export default function ShoppingCart() {
 
@@ -35,6 +35,7 @@ export default function ShoppingCart() {
 
   return (
     <>
+      <Header />
 
       {/* Shopping Cart */}
       <div className="all-shop-cart">
@@ -62,7 +63,7 @@ export default function ShoppingCart() {
                   />
                   <p>{item.name}</p>
                 </td>
-                <td>{item.prix}</td>
+                <td>{item.prix} Dhs</td>
                 <td>
                   <input
                     type="number"
@@ -72,7 +73,7 @@ export default function ShoppingCart() {
                     onChange={(e) => updateQuantity(index, e.target.value)} //e.target.value= cible quantity input et donne en valeur paramètre
                   />
                 </td>
-                <td className="sub-total">{calculateTotalPerItem(item)}</td>
+                <td className="sub-total">{calculateTotalPerItem(item)} Dhs</td>
                 <td>
                   <p role="button" id="remove-btn" onClick={() => handleRemove(index)}>
                     Remove
@@ -85,7 +86,7 @@ export default function ShoppingCart() {
 
         {/* On appelle la function calculateTotalGeneral pour avoir le total géneral */}
         <div className="total-general">
-          <h4>Total General: <span style={{ color: '#00A170' }}>{calculateTotalGeneral()}</span></h4>
+          <h4>Total General: <span style={{ color: '#00A170' }}>{calculateTotalGeneral()} Dhs</span></h4>
         </div>
       </div>
 

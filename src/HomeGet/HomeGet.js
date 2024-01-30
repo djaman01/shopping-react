@@ -104,7 +104,7 @@ const {cartItems, setCartItems} = useMyContext();
                   />
                   <p>{item.name}</p>
                 </td>
-                <td>{item.prix}</td>
+                <td>{item.prix} Dhs</td>
                 <td>
                   <input
                     type="number"
@@ -114,7 +114,7 @@ const {cartItems, setCartItems} = useMyContext();
                     onChange={(e) => updateQuantity(index, e.target.value)} //e.target.value= cible quantity input et donne en valeur paramètre
                   />
                 </td>
-                <td className="sub-total">{calculateTotalPerItem(item)}</td>
+                <td className="sub-total">{calculateTotalPerItem(item)} Dhs</td>
                 <td>
                   <p role="button" id="remove-btn" onClick={() => handleRemove(index)}>
                     Remove
@@ -127,7 +127,7 @@ const {cartItems, setCartItems} = useMyContext();
 
         {/* On appelle la function calculateTotalGeneral pour avoir le total géneral */}
         <div className="total-general">
-          <h4>Total General: <span style={{ color: '#00A170' }}>{calculateTotalGeneral()}</span></h4>
+          <h4>Total General: <span style={{ color: '#00A170' }}>{calculateTotalGeneral()} Dhs</span> </h4>
         </div>
       </div>
 
