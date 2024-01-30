@@ -9,16 +9,6 @@ export default function Header() {
 
   const { cartItems } = useMyContext();
 
-  //To scroll to the bottom of the page
-  const scrollToBottom = () => {
-    console.log("Scrolling to bottom!");
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    })
-  }
-
-
   return (
     <>
 
@@ -43,8 +33,6 @@ export default function Header() {
             <li>Dashboard</li>
           </Link>
 
-
-          <li onClick={scrollToBottom}>Scroll to Cart</li>
 
           <Link to='/shopCart'>
             <div className="cart-header">
