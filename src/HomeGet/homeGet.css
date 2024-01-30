@@ -1,3 +1,16 @@
+.image-shop-cart {
+  width: 50px;
+  height: 60px;
+}
+
+.shop-cart-title, .total-general {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#quantity-product {
+  width: 90px;
+}
 
 .home-title {
   text-align: center;
