@@ -6,8 +6,8 @@ import { StyleSheetManager } from 'styled-components'; //Pour eviter les erreurs
 
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
-
 import './dashboard.css'
+import Header from "../Header/Header";
 
 
 export default function Dashboard() {
@@ -153,6 +153,9 @@ export default function Dashboard() {
 
   return (
     <>
+    
+    <Header />
+    
       {error ? <p style={{ color: 'red' }}>{error}</p> :
 
         <StyleSheetManager shouldForwardProp={shouldForwardProp}>

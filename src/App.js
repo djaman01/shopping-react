@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Main />} /> 
         <Route path="addAllProduct" element={<AddAllProduct/>} /> 
         <Route path="shopCart" element={<ShoppingCart/>} /> 
-        <Route path="dashboard" element={<Dashboard/>} /> 
+        <Route path="addProduct" element={<AddAllProduct />} />
         <Route path="dashboard" element={<Dashboard/>} /> 
         <Route path="ficheProduit/:productId" element={<FicheProduit/>} /> {/* /:productid = paramètre dynamique */}
         <Route path="*" element={<NoPage />} />

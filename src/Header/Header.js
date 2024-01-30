@@ -13,14 +13,17 @@ export default function Header() {
     <>
 
       <nav className="header-nav">
-        <Link to='/addAllProduct'>
+        <Link to='/'>
           <ul>
             <li><img src="/virtual-store.jpeg" alt="" className="logo-image" /></li>
           </ul>
         </Link>
 
         <ul>
-          <li >Home</li>
+          <Link to="/">
+            <li >Home</li>
+          </Link>
+
           <li role="list" dir="rtl">
             <a href="#" aria-haspopup="listbox">Categories</a>
             <ul role="listbox" >
@@ -29,6 +32,11 @@ export default function Header() {
               <li>Kids</li>
             </ul>
           </li>
+
+          <Link to="/addProduct">
+            <li> Add Product </li>
+          </Link>
+
           <Link to="/dashboard">
             <li>Dashboard</li>
           </Link>
