@@ -46,6 +46,7 @@ export default function PropsModel({ productsArr, error, addToCart }) { //produc
                 </Link>
 
                 <div>
+                  {/* La value du props addToCart sera donc une variable qui store une arrow function avec un parametre */}
                   <button className='button-add' onClick={() => addToCart(element)}>Add to List</button>
                 </div>
 

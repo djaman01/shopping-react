@@ -6,13 +6,14 @@ import PropsModel from "../PropsModel/PropsModel";
 
 import { useMyContext } from "../ContextComp";
 
-export default function Chemise() {
+export default function Sport() {
+
 
   const [productObject, setProductObject] = useState([]); //State variable ou on va store tous les objets représentants les produits
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/chemise`)
+    axios.get(`http://localhost:3005/sport`)
       .then((response) => setProductObject(response.data))
       .catch((error) => {
         console.error("Front-end error:", error.message);

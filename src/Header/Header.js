@@ -25,13 +25,19 @@ export default function Header() {
           </Link>
 
           <li role="list" dir="rtl">
-            <a href="#" aria-haspopup="listbox">Categories</a>
+            <a role="lisbox">Categories</a>
             <ul role="listbox" >
               <Link to='/chemise'>
-              <li>Chemises</li>
+                <li>Chemises</li>
               </Link>
-              <li>Pantalon</li>
-              <li>Sport</li>
+
+              <Link to='/pantalon'>
+                <li>Pantalon</li>
+              </Link>
+              
+              <Link to='/sport'>
+                <li>Sport</li>
+              </Link>
             </ul>
           </li>
 
