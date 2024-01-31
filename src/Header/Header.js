@@ -27,15 +27,15 @@ export default function Header() {
           <li role="list" dir="rtl">
             <a role="lisbox">Categories</a>
             <ul role="listbox" >
-              <Link to='/chemise'>
+              <Link to='/products/Chemise'>
                 <li>Chemises</li>
               </Link>
 
-              <Link to='/pantalon'>
+              <Link to='/products/Pantalon'>
                 <li>Pantalon</li>
               </Link>
-              
-              <Link to='/sport'>
+
+              <Link to='/products/Sport'>
                 <li>Sport</li>
               </Link>
             </ul>

@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
@@ -6,24 +8,26 @@ import PropsModel from "../PropsModel/PropsModel";
 
 import { useMyContext } from "../ContextComp";
 
-export default function Pantalon() {
+export default function ProductCategory() {
 
-  const [productObject, setProductObject] = useState([]); //State variable ou on va store tous les objets représentants les produits
+  const { type } = useParams();
+  
+  const [productObject, setProductObject] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/pantalon`)
+    axios.get(`http://localhost:3005/products/${type}`)
       .then((response) => setProductObject(response.data))
       .catch((error) => {
         console.error("Front-end error:", error.message);
-        setError('An Eroor occured while fetching data');
+        setError('An error occurred while fetching data');
       })
       .catch((error) => {
         console.error(error.response &&
           `${error.response.status}: ${error.response.data.message}`
         );
       });
-  }, [])
+  }, [type]);
 
   //cartItems et setCartItems sont set in the <Main /> Component, pour pouvoir utiliser cartItems dans plusieurs component
   const { cartItems, setCartItems } = useMyContext();
@@ -51,5 +55,6 @@ export default function Pantalon() {
       <Footer />
 
     </>
+
   )
 }

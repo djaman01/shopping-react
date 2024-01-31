@@ -6,9 +6,7 @@ import AddAllProduct from "./AddAllProduct/AddAllProduct";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Dashboard from "./Dashboard/Dashboard";
 import FicheProduit from "./FicheProduit/FicheProduit";
-import Chemise from "./Chemises/Chemise";
-import Sport from "./Sport/Sport";
-import Pantalon from "./Pantalon/Pantalon";
+import ProductCategory from "./ProductCategory/ProductCategory";
 
 
 function App() {
@@ -20,9 +18,7 @@ function App() {
         <Route path="shopCart" element={<ShoppingCart/>} /> 
         <Route path="addProduct" element={<AddAllProduct />} />
         <Route path="dashboard" element={<Dashboard/>} /> 
-        <Route path="chemise" element={<Chemise/>} />  
-        <Route path="sport" element={<Sport/>} /> 
-        <Route path="pantalon" element={<Pantalon/>} /> 
+        <Route path="products/:type" element={<ProductCategory />} />
         <Route path="ficheProduit/:productId" element={<FicheProduit/>} /> {/* /:productid = paramètre dynamique */}
         <Route path="*" element={<NoPage />} />
       </Routes>
