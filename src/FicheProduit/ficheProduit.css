@@ -21,11 +21,14 @@
 
 .descri-produit {
   margin-bottom: 20px;
+  border-bottom: 2px solid grey;
 }
 
 .type-produit, .prix-produit {
-  color: rgb(7, 7, 214);
+  color: rgb(8, 8, 195);
+  border-bottom: 2px solid grey;
 }
 .auteur-produit, .quantity-produit {
   color: rgb(243, 5, 5);
+  border-bottom: 2px solid grey;
 }
